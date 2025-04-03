@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tram Nguyen | QA Leadership Professional</title>
+    <style>
+        :root {
+            --primary-color: #2a6592;
+            --secondary-color: #f5f5f5;
+            --accent-color: #e67e22;
+            --text-color: #333;
+            --light-text: #666;
+            --border-color: #ddd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            margin-bottom: 20px;
+        }
+        
+        .header-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .header-title h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 5px;
+        }
+        
+        .contact-item svg {
+            margin-right: 8px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-links li a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-list li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .experience-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .job-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .job-duration {
+            color: var(--light-text);
+            font-style: italic;
+        }
+        
+        .key-achievements h4 {
+            margin: 15px 0 10px;
+            color: var(--accent-color);
+        }
+        
+        .achievements-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .achievements-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .achievements-list li:before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: -5px;
+        }
+        
+        /* Education Section */
+        .education-item {
+            margin-bottom: 25px;
+        }
+        
+        .education-item h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .education-item .institution {
+            font-weight: 500;
+        }
+        
+        .education-item .duration {
+            color: var(--light-text);
+            font-style: italic;
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #1a5079;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .footer-text {
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-title h1 {
+                font-size: 2rem;
+            }
+            
+            .header-title h2 {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .job-duration {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="/api/placeholder/150/150" alt="Tram Nguyen" class="profile-img">
+            <div class="header-title">
+                <h1>Tram Nguyen</h1>
+                <h2>QA Leadership Professional</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM4.5 7.5a.5.5 0 0 1 0 1H4a.5.5 0 0 1 0-1h.5ZM5 4.25a.25.25 0 0 1 .25-.25h1A.25.25 0 0 1 6.5 4v1.5A.25.25 0 0 1 6.25 6h-1A.25.25 0 0 1 5 5.75V4Zm2 .25a.25.25 0 0 1 .25-.25h2.5A.25.25 0 0 1 10 4.5v1A.25.25 0 0 1 9.75 6h-2.5A.25.25 0 0 1 7 5.75v-1Zm-2 4a.25.25 0 0 1 .25-.25h2.5A.25.25 0 0 1 8 8.5v1a.25.25 0 0 1-.25.25h-2.5A.25.25 0 0 1 5 9.5v-1Zm4 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v1a.25.25 0 0 1-.25.25h-1.5A.25.25 0 0 1 9 9.5v-1Zm0 2.25a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v1a.25.25 0 0 1-.25.25h-1.5A.25.25 0 0 1 9 12.75v-1Z"/>
+                    </svg>
+                    Ho Chi Minh, Vietnam
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+                        <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                    (84) 986823034
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                    </svg>
+                    ntvu0826@gmail.com
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="about" class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Seasoned QA Leader with over 14 years of experience in the software testing industry, specializing in building and mentoring QA teams across multiple domains including E-commerce, entertainment applications, recruitment, and on-demand staffing.</p>
+                    <p>I have a proven track record in establishing robust testing methodologies, designing comprehensive test strategies, and implementing efficient quality assurance processes. My expertise spans both functional and API testing with particular focus on integration testing across diverse platforms and applications.</p>
+                    <p>Throughout my career, I've demonstrated strong leadership skills in building and managing QA teams, mentoring junior professionals, and serving as the primary point of contact for clients. I excel in coordinating with cross-functional teams including development, product, and design to ensure the delivery of high-quality software products.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" style="background-color: var(--secondary-color);">
+            <div class="container">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Leadership & Management</h3>
+                        <ul class="skill-list">
+                            <li>Team building and management of up to 17 QA professionals</li>
+                            <li>Mentoring and professional development</li>
+                            <li>Client relationship management</li>
+                            <li>Cross-functional coordination</li>
+                            <li>Project management and planning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Technical Expertise</h3>
+                        <ul class="skill-list">
+                            <li>Functional, regression, and integration testing</li>
+                            <li>API testing using Postman</li>
+                            <li>Automated Testing (Basic)</li>
+                            <li>Database testing (SQL, PostgreSQL)</li>
+                            <li>Java programming</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Tools & Technologies</h3>
+                        <ul class="skill-list">
+                            <li>Jira, Bugzilla, SpiraTest</li>
+                            <li>Git, Heroku, AWS</li>
+                            <li>MySQL, PostgreSQL</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Domain Knowledge</h3>
+                        <ul class="skill-list">
+                            <li>E-commerce platforms</li>
+                            <li>Web and mobile applications</li>
+                            <li>Recruitment systems</li>
+                            <li>On-demand staffing</li>
+                            <li>Enterprise integrations (Salesforce)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience" class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">QC Lead</h3>
+                        <div class="company">Mylong</div>
+                    </div>
+                    <div class="job-duration">August 2020 — October 2022</div>
+                </div>
+                <p>Led quality assurance initiatives across 6 concurrent projects, focusing on integration testing with Salesforce, Delivery Solution, Onfleet, and Nash platforms.</p>
+                
+                <div class="key-achievements">
+                    <h4>Key Achievements:</h4>
+                    <ul class="achievements-list">
+                        <li>Built and trained a high-performing QA team from the ground up</li>
+                        <li>Established comprehensive testing methodologies and processes</li>
+                        <li>Designed and implemented integration testing strategies for complex platform interactions</li>
+                        <li>Created robust test plans and checklists ensuring product quality</li>
+                        <li>Facilitated smooth coordination between development, product, and design teams</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">Senior QC</h3>
+                        <div class="company">Wonolo</div>
+                    </div>
+                    <div class="job-duration">July 2016 — February 2020</div>
+                </div>
+                <p>Managed quality assurance for a flexible job recruitment platform, focusing on both manual and automated testing processes. Team size: 10.</p>
+                
+                <div class="key-achievements">
+                    <h4>Key Achievements:</h4>
+                    <ul class="achievements-list">
+                        <li>Provided critical feedback that improved product functionality and usability</li>
+                        <li>Focused primarily on manual testing methodologies</li>
+                        <li>Supported international teams across different time zones</li>
+                        <li>Specialized in handling complex technical testing challenges</li>
+                        <li>Guided team members on product logic and testing methodologies</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">QC Lead</h3>
+                        <div class="company">Titan</div>
+                    </div>
+                    <div class="job-duration">September 2013 — June 2016</div>
+                </div>
+                <p>Led testing for web-based monitoring applications that tracked server statistics across multiple platforms. Team size: 6.</p>
+                
+                <div class="key-achievements">
+                    <h4>Key Achievements:</h4>
+                    <ul class="achievements-list">
+                        <li>Served as primary client contact, building trust and securing additional projects</li>
+                        <li>Recognized as "Best Employee of the Year"</li>
+                        <li>Developed junior team members into competent QA professionals</li>
+                        <li>Designed comprehensive testing strategies and processes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">QC Team Lead</h3>
+                        <div class="company">LogiGear</div>
+                    </div>
+                    <div class="job-duration">September 2008 — August 2016</div>
+                </div>
+                <p>Managed a team of 17 QA professionals for Evernote and other major clients including EA.</p>
+                
+                <div class="key-achievements">
+                    <h4>Key Achievements:</h4>
+                    <ul class="achievements-list">
+                        <li>Rapidly scaled testing capabilities to meet growing project demands</li>
+                        <li>Developed junior testers to work directly with clients</li>
+                        <li>Implemented efficient daily reporting systems for client updates</li>
+                        <li>Quickly advanced to client liaison role on the EA project</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education" style="background-color: var(--secondary-color);">
+            <div class="container">
+                <h2 class="section-title">Education & Professional Development</h2>
+                
+                <div class="education-item">
+                    <h3>Management Information System</h3>
+                    <div class="institution">University of Economics and Law, Ho Chi Minh</div>
+                    <div class="duration">September 2004 — September 2008</div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>Fundamental Business Analysis</h3>
+                    <div class="institution">BAC - Business Analyst Training Center, Ho Chi Minh</div>
+                    <div class="duration">2019</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-text">
+                <p>&copy; 2025 Tram Nguyen. All Rights Reserved.</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.
